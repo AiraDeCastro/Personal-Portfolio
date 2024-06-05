@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="A webpage that maintains programmer's finished courses from term 1 and on-going courses for term 2 using JavaScript.">
+        <meta name="keywords" content="CST8285 lab assignment 1, HTML, CSS, Web Programming, JavaScript, js">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Aira de Castro">
+        <title>Courses - Aira de Castro</title>
+        <link rel="stylesheet" type="text/css" href="design.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navBar">
+            <ul>
+                <li class="name">Aira de Castro</li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1>Courses</h1>
+                <!-- Search Bar -->
+                <input id="search-bar" type="text" placeholder="Search for Courses">
+                <!-- Buttons to show term number -->
+                <button type="button" onclick="showTerm1Courses()">Term 1</button>
+                <button type="button" onclick="showTerm2Courses()">Term 2</button>
+                <!-- Buttons to show ascending or descending of term number -->
+                <button type="button" onclick="sortByTerm1()">Ascending</button>
+                <button type="button" onclick="sortByTerm2()">Descending</button>
+                <!-- Container for javascript array data -->
+                <div class="js-courses"> 
+                    <div id="course-container"></div>
+                </div>
+        </main>
+        <footer>
+            <address>deca0107@algonquinlive.com | Aira de Castro</address>
+        </footer>
+    </body>
+</html>
+

@@ -1,0 +1,126 @@
+<!--Name: Aira de Castro-->
+<!--File Name: customer.html-->
+<!--Date Created: May 24, 2023-->
+<!--Description: A simple webpage to get user information such as first name, last name, email, password, address, city, state, zip, phone number, country, continent, birthday and favorite color. It also asks the user to agree.-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="A simple web page for getting user data.">
+        <meta name="keywords" content="CST8285lab1, Web Programming, Form, Customer Information, HTML">
+        <meta name="author" content="Aira de Castro">
+        <title>Customer Registration</title>
+    </head>
+    <body>
+        <h1>Customer Registration</h1>
+        <form action="Lab2Form.php" method="post" enctype="text/plain">
+            <div id="form">
+                <!--Groups the user information-->
+                <fieldset>
+                    <!--Legend defines the caption-->
+                    <legend>1. User Info</legend>
+                    <table>
+                    <tr>
+                    <td><label for="firstname">First Name</label><br>
+                    <input type="text" id="firstname" name="firstname" readonly value="Aira">&emsp;</td>
+                    <td><label for="lastname">Last Name</label><br>
+                    <input type="text" id="lastname" name="lastname" maxlength="10"></td>
+                    </tr>
+                    </table>
+                    <label for="email">Email</label><br>
+                    <!--Email defines an input field for entering an email address-->
+                    <input type="email" id="email" name="email" size="49" placeholder="xxx@yyy.zzz"><br>
+                    <table>
+                    <tr>
+                    <!--Password defines a one-line password input field-->
+                    <td><label for="password">Password</label><br>
+                    <input type="password" id="password" name="password" placeholder="at least 8 characters">&emsp;</td>
+                    <td><label for="passwordrepeat">Password Repeat</label><br>
+                    <input type="password" id="passwordrepeat" name="passwordrepeat" placeholder="at least 8 characters"></td>
+                    </tr>
+                    </table>
+                </fieldset>
+                <br>
+                <!--Groups the user location-->
+                <fieldset>
+                    <!--Legend defines the caption-->
+                    <legend>2. Location</legend>
+                    <label for="address">Address</label><br>
+                    <input type="text" id="address" name="address" size="49"><br>
+                    <table>
+                    <tr>
+                    <td><label for="city">City</label><br>
+                    <input type="text" id="city" name="city">&emsp;</td>
+                    <td><label for="state">State</label><br>
+                    <input type="text" id="state" name="state">&emsp;</td>
+                    <td><label for="zip">Zip</label><br>
+                    <input type="text" id="zip" name="zip">&emsp;<br></td>
+                    </tr>
+                    </table>
+                    <table>
+                    <tr>  
+                    <td><label for="phone">Phone</label><br>
+                    <!--Number defines an input field to enter a number-->
+                    <input type="number" id="phone" name="phone" placeholder="NNN-NNN-NNNN">&emsp;</td>
+                    <td><label for="country">Country</label><br>
+                    <!--Specifies a drop-down list of countries-->
+                    <select name="country" id="country">
+                        <option value="usa">United States</option>
+                        <option value="canada">Canada</option>
+                        <option value="mexico">Mexico</option>
+                        <option value="greece">Greece</option>
+                        <option value="denmark">Denmark</option>
+                        <option value="france">France</option>
+                        <option value="spain">Spain</option>
+                        <option value="netherlands">Netherlands</option>
+                        <option value="monaco">Monaco</option>
+                        <option value="germany">Germany</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="italy">Italy</option>
+                        <option value="russia">Russia</option>
+                        <option value="norway">Norway</option>
+                        <option value="portugal">Portugal</option>
+                        <option value="brazil">Brazil</option>
+                        <option value="argentina">Argentina</option>
+                        <option value="columbia">Columbia</option>
+                        <option value="chile">Chile</option>
+                        <option value="peru">Peru</option>
+                        </select></td>
+                    </tr>  
+                    </table>
+                    <p>Continent</p>
+                    <!--Selects a single item from a small list using radio buttons-->
+                    <input type="radio" id="na" name="continent" value="north america">
+                    <label for="na">North America</label><br>
+                    <input type="radio" id="eu" name="continent" value="europe">
+                    <label for="na">Europe</label><br>
+                    <input type="radio" id="sa" name="continent" value="south america">
+                    <label for="na">South America</label>
+                </fieldset>
+                <br>
+                <!--Groups the user's personal information-->
+                <fieldset>
+                    <!--Legend defines the caption-->
+                    <legend>3. Personal Details</legend>
+                    <label for="birthday">Birth Day</label>
+                    <!--Date defines an input field for selection of date-->
+                    <input type="date" id="birthday" name="birthday">
+                    <label for="favecolor">&emsp;Favorite Color</label>
+                    <!--Color defines an input field with a specific color-->
+                    <input type="color" id="favecolor" name="favecolor">
+                </fieldset><br>
+            </div>
+                <h3>4. All Done</h3>
+                <!--Checkbox defines checkboxes which allows user to select option to agree-->
+                <input type="checkbox" id="agree">
+                <label for="agree">I agree to the</label>
+                <!--This is a hyperlink connecting to the terms.-->
+                <a href="customer.html">Terms of the Site</a><br><br>                        
+                <!--Submit defines a submit button to submit the form to server-->
+                <input type="submit" value="Send">                        
+                <!--Reset defines a reset button to reset all values in the form-->
+                <input type="reset" value="Clear information"><br>
+                &copy; 2023 - Aira De Castro - All Rights Reserved
+        </form>
+    </body>
+</html>
