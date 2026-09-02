@@ -1,1 +1,15 @@
 .claude/
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Test artifacts
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# Logs
+npm-debug.log*
