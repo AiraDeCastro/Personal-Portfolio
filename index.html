@@ -1,43 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="A webpage that maintains the description about myself and Algonquin College.">
-        <meta name="keywords" content="CST8285lab3, CSS, Web Programming, html, landing page">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="Aira de Castro">
-        <title>Home - Aira de Castro</title>
-        <link rel="stylesheet" type="text/css" href="design.css">
-    </head>
-    <body>
-        <!-- Navigation Bar -->
-        <nav class="navBar">
-            <ul>
-            <li class="name">Aira de Castro</li>
-            <li><a href="courses.html">Courses</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="index.html">Home</a></li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aira De Castro — Developer</title>
+  <meta name="description" content="Aira De Castro — Software developer in Ottawa, ON. Projects, skills, and experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#top" class="logo">Aira De Castro</a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a href="#contact" class="btn btn-header">Get in touch</a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="top">
+    <div class="hero-media">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="assets/video/hero-poster.jpg"
+      >
+        <source src="assets/video/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Software Developer &mdash; Ottawa, ON</p>
+      <h1 class="hero-title">I build things<br />that ship.</h1>
+      <p class="hero-sub">
+        From architecture to deployment — code, AI-assisted workflows, and a lot of QA.
+      </p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">View my work</a>
+        <a href="#contact" class="btn btn-ghost">Let's talk</a>
+      </div>
+    </div>
+
+    <a href="#about" class="scroll-cue" aria-label="Scroll down">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <p class="section-tag">About</p>
+      <h2 class="section-heading">
+        A developer who picks up new systems and codebases quickly.
+      </h2>
+      <p class="about-body">
+        I independently built and deployed a full production web application — from architecture
+        through release — while directing AI coding agents through structured, human-reviewed
+        prompt workflows. I hold an Ontario College Diploma in Computer Programming from Algonquin
+        College (Dean's Honor List, 2023), and I'm looking to bring that same ownership mindset to
+        software development, where code quality and reliability matter most.
+      </p>
+
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-number">12+</span>
+          <span class="stat-label">Repositories shipped</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">1</span>
+          <span class="stat-label">Production app, freelance to release</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Languages spoken</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WORK / PROJECTS ===== -->
+  <section class="work" id="work">
+    <div class="section-inner">
+      <p class="section-tag">Selected Work</p>
+      <h2 class="section-heading">Projects</h2>
+
+      <div class="project-grid">
+
+        <!-- Project 1 -->
+        <article class="project-card project-card--wide" data-tile="LR">
+          <div class="project-media" style="--tile-a:#4b3f72; --tile-b:#8b7cc7;">
+            <span class="project-media-label">Lavender<br />Refreshments</span>
+          </div>
+          <div class="project-info">
+            <div class="project-info-top">
+              <h3>Lavender Refreshments</h3>
+              <span class="project-year">2026</span>
+            </div>
+            <p>
+              A responsive, multi-page restaurant website built freelance for Lavender
+              Refreshments — from design through deployment. Directed AI coding agents across
+              iterative prompt cycles, validating every output for production readiness.
+            </p>
+            <ul class="project-tags">
+              <li>React</li>
+              <li>Vite</li>
+              <li>Astro</li>
+              <li>AI-Assisted Dev</li>
             </ul>
-        </nav>
-        <main class="bg">
-            <img src="images/IMG_7299.jpg" alt="Aira de Castro" class="aira">
-                <h1>Aira de Castro</h1>
-                    <p class="description">
-                    A Computer Programming student at Algonquin College. <strong>Sociable, collaborative, and goal-driven 
-                    </strong>with excellent communication skills, I'm an <strong>adventurous soul</strong> willing to take risks and explore 
-                    new things. I sing, play instruments, play sports, and watch movies.
-                    </p>
-                <p class="link"><a href="https://www.algonquincollege.com/sat/program/computer-programming/">Algonquin College</a></p>
-                    <p class="description">
-                    <strong>Study Computer Programming with me!</strong> Algonquin College is a <strong>leading Canadian institution</strong> renowned for 
-                    its commitment to delivering <strong>high-quality education</strong> and fostering career success for its students. 
-                    With campuses located in <strong>Ottawa, Perth, and Pembroke</strong>, the college offers a wide range of programs 
-                    and courses across various disciplines, including <strong>business, technology, health sciences, media and 
-                    design, skilled trades, and more.</strong>
-                    </p>
-        </main>
-        <footer>
-            <address>deca0107@algonquinlive.com | Aira de Castro</address>
-        </footer>
-    </body>
+            <div class="project-links">
+              <a href="https://github.com/AiraDeCastro/Lavender-Refreshments-AI" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card" data-tile="JB">
+          <div class="project-media" style="--tile-a:#7a5236; --tile-b:#d9b48f;">
+            <span class="project-media-label">Jordyn's<br />Bakes</span>
+          </div>
+          <div class="project-info">
+            <div class="project-info-top">
+              <h3>Jordyn's Bakes</h3>
+              <span class="project-year">2026</span>
+            </div>
+            <p>A bakery brand site focused on clean product presentation and fast load times.</p>
+            <ul class="project-tags">
+              <li>TypeScript</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/AiraDeCastro/Jordyns-Bakes" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card" data-tile="3D">
+          <div class="project-media" style="--tile-a:#0f3d3e; --tile-b:#4fb3af;">
+            <span class="project-media-label">3D<br />Island</span>
+          </div>
+          <div class="project-info">
+            <div class="project-info-top">
+              <h3>3D Island</h3>
+              <span class="project-year">2025</span>
+            </div>
+            <p>An interactive 3D island scene built with Three.js — WebGL, lighting, and camera controls from scratch.</p>
+            <ul class="project-tags">
+              <li>JavaScript</li>
+              <li>Three.js</li>
+              <li>WebGL</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/AiraDeCastro/3d-island" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card" data-tile="TP">
+          <div class="project-media" style="--tile-a:#5c1f1f; --tile-b:#c17b5a;">
+            <span class="project-media-label">Ticket<br />Pricing</span>
+          </div>
+          <div class="project-info">
+            <div class="project-info-top">
+              <h3>Ticket Pricing</h3>
+              <span class="project-year">2024</span>
+            </div>
+            <p>A Java application modeling ticket pricing logic — built around OOP principles and clean data structures.</p>
+            <ul class="project-tags">
+              <li>Java</li>
+              <li>OOP</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/AiraDeCastro/Ticket-Pricing" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="work-cta">
+        <a href="https://github.com/AiraDeCastro" target="_blank" rel="noopener" class="btn btn-outline">
+          See all projects on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="skills" id="skills">
+    <div class="section-inner">
+      <p class="section-tag section-tag--light">Toolkit</p>
+      <h2 class="section-heading section-heading--light">Skills</h2>
+
+      <div class="skills-grid">
+        <div class="skill-block">
+          <h3>Languages</h3>
+          <ul>
+            <li>JavaScript</li>
+            <li>C++</li>
+            <li>Python</li>
+            <li>Java</li>
+            <li>HTML &amp; CSS</li>
+            <li>COBOL</li>
+          </ul>
+        </div>
+
+        <div class="skill-block">
+          <h3>Systems &amp; Tools</h3>
+          <ul>
+            <li>Linux (CLI, file systems, process mgmt)</li>
+            <li>Git &amp; GitHub</li>
+            <li>VS Code</li>
+            <li>npm</li>
+            <li>Virtual Machines</li>
+          </ul>
+        </div>
+
+        <div class="skill-block">
+          <h3>Software Development</h3>
+          <ul>
+            <li>Object-Oriented Programming</li>
+            <li>Data Structures &amp; Algorithms</li>
+            <li>Debugging &amp; Code Review</li>
+            <li>Unit Testing</li>
+            <li>Version Control</li>
+          </ul>
+        </div>
+
+        <div class="skill-block">
+          <h3>AI &amp; Automation</h3>
+          <ul>
+            <li>AI Agent Orchestration</li>
+            <li>Prompt Engineering</li>
+            <li>Context Management</li>
+            <li>Human-in-the-Loop Review</li>
+            <li>Claude (Anthropic)</li>
+          </ul>
+        </div>
+
+        <div class="skill-block">
+          <h3>QA &amp; Testing</h3>
+          <ul>
+            <li>Functional Testing</li>
+            <li>Test Case Design</li>
+            <li>Cypress</li>
+            <li>Jira &amp; Confluence</li>
+          </ul>
+        </div>
+
+        <div class="skill-block">
+          <h3>Certifications</h3>
+          <ul>
+            <li>Google Generative AI Leader (in progress)</li>
+            <li>Worker Health &amp; Safety Awareness</li>
+            <li>Smart Serve</li>
+            <li>Food Handler</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / FOOTER ===== -->
+  <footer class="contact" id="contact">
+    <div class="section-inner">
+      <p class="section-tag">Get in touch</p>
+      <h2 class="section-heading">Let's build something.</h2>
+      <p class="contact-sub">Open to software development opportunities in Ottawa and remote.</p>
+
+      <div class="contact-links">
+        <a href="mailto:airanicoledecastro9@gmail.com">airanicoledecastro9@gmail.com</a>
+        <a href="tel:+13435587019">(343) 558-7019</a>
+        <a href="https://linkedin.com/in/airadc" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/AiraDeCastro" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="year"></span> Aira De Castro. Ottawa, ON.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
 </html>
