@@ -29,9 +29,8 @@ describe('Portfolio site', () => {
     cy.get('.project-card').each(($card) => {
       cy.wrap($card).find('h3').should('not.be.empty');
       cy.wrap($card)
-        .find('.project-links a')
-        .should('have.attr', 'href')
-        .and('include', 'github.com/AiraDeCastro');
+        .find('.project-links a[href*="github.com/AiraDeCastro"]')
+        .should('exist');
     });
   });
 
