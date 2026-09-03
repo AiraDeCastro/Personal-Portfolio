@@ -81,6 +81,8 @@ for the reasoning behind each.
       in this repo
 - [x] Write `PLANNING.md` — vision, architecture, tech stack, required tools
 - [x] Write this file
+- [x] Add the "Backlog — Projects to add" section below, as a lightweight
+      alternative to a full add/edit admin UI
 
 ## Milestone 7 — Open work
 
@@ -97,4 +99,17 @@ for the reasoning behind each.
       (Settings → Environment Variables) — sign-in returns a 500 until this
       is set. Claude can't do this step; it needs Aira's Vercel dashboard
       access.
-- [ ] Add new projects to the grid as freelance/personal work ships
+- [ ] Add new projects to the grid as freelance/personal work ships (see
+      the Backlog below for repos already queued)
+
+## Backlog — Projects to add
+
+Repos you want featured eventually, noted here whenever you think of one —
+add a line yourself (even straight from GitHub's web editor, like the status
+flip). No admin UI needed: I read this file at the start of every session
+(see CLAUDE.md) and turn each line into a proper card — real description,
+tags, colors, screenshot — the same way Set It Up got added. Check it off
+once the card ships.
+
+- [ ] <repo-name> — <github-url> — <optional: one-line note on what it is
+      or why it's worth featuring>
