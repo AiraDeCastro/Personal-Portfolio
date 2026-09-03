@@ -113,3 +113,7 @@ once the card ships.
 
 - [ ] <repo-name> — <github-url> — <optional: one-line note on what it is
       or why it's worth featuring>
+- [ ] Gunita — https://github.com/AiraDeCastro/Gunita-Photo-Album — private
+      Netflix-style photo/video album app (Next.js, Supabase Postgres/Auth/
+      Storage, Row Level Security-backed roles, Vitest); v1 feature-complete,
+      not yet deployed
