@@ -1,6 +1,10 @@
 // Local editor for public/data/projects-status.json. This page can't write
 // to the server — it downloads an updated file that then gets committed and
 // pushed to actually change what visitors see.
+//
+// Access is gated by a password checked server-side, in api/admin-login.js
+// (see _session.js) — the password itself never reaches this file or the
+// browser.
 const PROJECTS = [
   { id: 'lavender-refreshments', title: 'Lavender Refreshments' },
   { id: 'jordyns-bakes', title: "Jordyn's Bakes" },
@@ -11,8 +15,13 @@ const PROJECTS = [
 
 const STATUS_URL = '/data/projects-status.json';
 
+const loginForm = document.getElementById('loginForm');
+const passwordInput = document.getElementById('passwordInput');
+const loginError = document.getElementById('loginError');
+const adminPanel = document.getElementById('adminPanel');
 const listEl = document.getElementById('projectList');
 const downloadBtn = document.getElementById('downloadBtn');
+const signOutBtn = document.getElementById('signOutBtn');
 const statusMsg = document.getElementById('statusMsg');
 
 let currentStatus = {};
@@ -54,6 +63,66 @@ async function loadStatus() {
   render();
 }
 
+function showPanel() {
+  loginForm.hidden = true;
+  adminPanel.hidden = false;
+  loadStatus();
+}
+
+function showLogin() {
+  adminPanel.hidden = true;
+  loginForm.hidden = false;
+  passwordInput.value = '';
+  passwordInput.focus();
+}
+
+async function checkSession() {
+  try {
+    const res = await fetch('/api/admin-check', { cache: 'no-store' });
+    const data = await res.json();
+    if (data.authenticated) {
+      showPanel();
+      return;
+    }
+  } catch {
+    // Treat a network/API error the same as "not signed in".
+  }
+  showLogin();
+}
+
+loginForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  loginError.hidden = true;
+
+  try {
+    const res = await fetch('/api/admin-login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: passwordInput.value }),
+    });
+
+    if (res.ok) {
+      showPanel();
+      return;
+    }
+
+    const data = await res.json().catch(() => ({}));
+    loginError.textContent = data.error || 'Sign-in failed.';
+  } catch {
+    loginError.textContent = 'Sign-in failed — check your connection and try again.';
+  }
+  loginError.hidden = false;
+});
+
+signOutBtn.addEventListener('click', async () => {
+  try {
+    await fetch('/api/admin-logout', { method: 'POST' });
+  } catch {
+    // Cookie may already be gone — show the login form regardless.
+  }
+  showLogin();
+});
+
 listEl.addEventListener('change', (event) => {
   const checkbox = event.target.closest('input[type="checkbox"]');
   if (!checkbox) return;
@@ -76,4 +145,4 @@ downloadBtn.addEventListener('click', () => {
     'Downloaded. Replace public/data/projects-status.json with this file, then commit and push to publish.';
 });
 
-loadStatus();
+checkSession();

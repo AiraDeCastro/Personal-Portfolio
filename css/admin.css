@@ -43,6 +43,49 @@ body {
   font-size: 13px;
 }
 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 320px;
+}
+
+/* An unconditional `display` here would otherwise beat the `hidden`
+   attribute's UA-stylesheet `display: none` — author styles win over UA
+   styles regardless of specificity, so this has to be explicit. */
+.login-form[hidden] {
+  display: none;
+}
+
+.login-form label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-fg);
+}
+
+.login-form input[type='password'] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  background: #fff;
+  color: var(--color-fg);
+}
+
+.login-form input[type='password']:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.login-error {
+  font-size: 13px;
+  color: #b3261e;
+  margin: 0;
+}
+
 .project-list {
   display: flex;
   flex-direction: column;
@@ -89,6 +132,12 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
+}
+
+.admin-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .admin-status {

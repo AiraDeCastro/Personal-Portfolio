@@ -30,10 +30,18 @@ for something broken.
 
 ## Architecture
 
-Static site, no backend, no database. The only "dynamic" behavior is a
-client-side fetch against a JSON file.
+Static site, no database, no user accounts. The one deliberate exception is
+three small stateless Vercel Serverless Functions that gate access to
+`admin.html` behind a password — everything else is a client-side fetch
+against a JSON file.
 
 ```
+  admin.html ──POST password──▶ api/admin-login.js ──compares to──▶ ADMIN_PASSWORD
+      ▲                              │                               (Vercel env var,
+      │                       sets signed session cookie              never sent to
+      │                              │                                 the browser)
+      └───────── shows project list only if cookie is valid ◀─────────┘
+
                     ┌─────────────────────────────┐
                     │   public/data/               │
                     │   projects-status.json        │  ← single source of truth
@@ -42,7 +50,7 @@ client-side fetch against a JSON file.
                                     │ fetch() at runtime
                      ┌──────────────┴───────────────┐
                      ▼                               ▼
-            index.html (public site)         admin.html (internal tool)
+            index.html (public site)         admin.html, once signed in
             renders project cards,           lists projects, toggles
             injects "In Progress"            status, downloads an
             badge when flagged               updated JSON file
@@ -51,6 +59,8 @@ client-side fetch against a JSON file.
                                     │
                           npm run build (Vite)
                        two entry points → dist/
+                    (api/*.js deployed separately by
+                     Vercel — Vite never touches it)
                                     │
                           git commit  (pre-commit gates:
                              │         lint → build → audit →
@@ -65,11 +75,13 @@ client-side fetch against a JSON file.
           https://personal-portfolio-aira-de-castro.vercel.app
 ```
 
-The admin page cannot publish on its own — there's no server for it to write
-to. A status change only goes live after the downloaded file is committed
-and pushed through the same pipeline as any code change. This was a
-deliberate tradeoff (see the PRD, §8) against standing up a real backend
-purely to make one toggle real-time.
+The admin page still cannot *publish* a status change on its own — the
+serverless functions above only gate who can open and use the page, not
+where a change gets written. A status change only goes live after the
+downloaded file is committed and pushed through the same pipeline as any
+code change. Keeping publish backend-free (vs. write-through persistence)
+was a deliberate tradeoff (see the PRD, §8); gating *access* with a password
+was a separate, later decision Aira made explicitly, not a reversal of it.
 
 ## Technology stack
 
@@ -77,6 +89,7 @@ purely to make one toggle real-time.
 |---|---|---|
 | Markup / styling / behavior | Vanilla HTML, CSS, JS (ES modules) | No framework runtime to ship for a handful of mostly-static sections |
 | Build | [Vite](https://vitejs.dev) | Multi-page build (`index.html` + `admin.html`), fast dev server, zero-config for plain HTML/CSS/JS |
+| Admin auth | [Vercel Serverless Functions](https://vercel.com/docs/functions) (`api/*.js`, Node built-ins only) | A password check needs *something* server-side to check the password against — the smallest unit of "backend" that still isn't a database or accounts |
 | Type/font | Inter (Google Fonts) | Loaded directly, no local font files |
 | Linting | [ESLint](https://eslint.org) (flat config) + [Stylelint](https://stylelint.io) | JS and CSS correctness/consistency, run in the pre-commit gate |
 | Testing | [Cypress](https://www.cypress.io) | End-to-end specs against the built site (`cypress/e2e/`) |
@@ -103,8 +116,14 @@ To work on this repo locally, you need:
 Optional, not required for local development:
 
 - **GitHub CLI (`gh`)** — convenient for PRs/issues, not used by any script here.
-- **Vercel CLI** — only needed if deploying outside the GitHub-connected
-  auto-deploy; the project's `main` branch already auto-deploys without it.
+- **Vercel CLI** — needed only to run the real `api/admin-*.js` functions
+  locally (`vercel dev`), since plain `vite dev`/`vite preview` don't
+  execute them; `npm test` doesn't need it, as the Cypress specs stub those
+  routes with `cy.intercept`.
 
 Nothing else needs installing globally — `npm install` pulls every build,
 lint, test, and git-hook tool into `node_modules/`.
+
+One environment variable, set in the Vercel dashboard (never in the repo):
+`ADMIN_PASSWORD`, the password `admin.html`'s login checks against. Without
+it, `/api/admin-login` returns a 500 and sign-in can't succeed.

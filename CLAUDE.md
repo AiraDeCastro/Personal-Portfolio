@@ -26,20 +26,27 @@ day-to-day operating guide.
 
 ## Stack & architecture
 
-- Vanilla HTML/CSS/JS. No framework, no backend, no database.
+- Vanilla HTML/CSS/JS. No framework, no database. One narrow exception to
+  "no backend" — see below.
 - Vite builds two entry points: `index.html` (public site) and `admin.html`
   (internal status editor) — see `vite.config.js` `rollupOptions.input`.
+- `api/*.js` are Vercel Serverless Functions (Node, zero-config — Vercel
+  auto-detects anything under `api/`). Vite doesn't touch this folder at all;
+  it's deployed by Vercel separately from the static build.
 - Hosted on Vercel, tracking `main`. Every push to `main` auto-deploys — there
   is no separate staging step.
 - Live: https://personal-portfolio-aira-de-castro.vercel.app
 - Repo: https://github.com/AiraDeCastro/Personal-Portfolio
 
-**The no-backend constraint is deliberate**, not a gap to fill in. Don't add a
-server, database, or API route to "improve" the admin workflow below — that
-tradeoff was already considered and rejected in the PRD (real-time persistence
-wasn't worth the new service + auth + upkeep for a solo-maintained site). If
-that calculus changes, it's a product decision to raise with Aira, not one to
-make mid-task.
+**The no-backend constraint is deliberate, but not absolute.** Don't add a
+database, user accounts, or an API route to "improve" the admin *publish*
+workflow below — that tradeoff was considered and rejected in the PRD
+(real-time persistence wasn't worth a new service + upkeep for a
+solo-maintained site), and still holds. The one exception, made deliberately
+by Aira, is `api/admin-*.js`: three small stateless functions that gate
+*access* to `admin.html` behind a password (see "Admin access control"
+below). That's not a database and not user accounts — don't grow it into
+either without raising it as a product decision first.
 
 ## Commands
 
@@ -69,7 +76,8 @@ blocked:
 2. Full `npm run lint` — whole-repo ESLint + Stylelint
 3. `npm run build` — both `index.html` and `admin.html` must compile clean
 4. `npm run security` — fails on any high-severity `npm audit` finding
-5. `npm test` — the full Cypress suite (12 specs) must pass
+5. `npm test` — the full Cypress suite (16 tests across 2 spec files) must
+   pass
 6. `commit-msg` hook — commitlint enforces **Conventional Commits**
    (`feat:`, `fix:`, `build:`, `chore:`, etc. — see `commitlint.config.js`)
 
@@ -104,10 +112,37 @@ updated `projects-status.json` — which then has to be moved into
 live. If asked to "make the admin page save automatically," point back to
 this constraint rather than trying to fetch/POST from a static page.
 
-The page is intentionally unauthenticated (`<meta name="robots"
-content="noindex, nofollow">`, not linked from the public nav) — obscurity,
-not access control. That's a known, accepted tradeoff, not a bug to silently
-"fix" with a login screen.
+It's also still `noindex` and unlinked from the public nav, on top of the
+access control below — belt and suspenders, not redundant.
+
+## Admin access control
+
+`admin.html` is gated by a password checked server-side in
+`api/admin-login.js`, not in the browser:
+
+- `POST /api/admin-login` compares the submitted password to the
+  `ADMIN_PASSWORD` environment variable (set in the Vercel dashboard —
+  **never committed to the repo**) using `crypto.timingSafeEqual`, and on
+  success sets an `HttpOnly`, `Secure`, signed session cookie (12h expiry).
+- `GET /api/admin-check` tells `admin.html` on load whether to show the
+  password form or the project list.
+- `POST /api/admin-logout` clears the cookie.
+- The cookie's signature is an HMAC of its expiry timestamp, keyed on
+  `ADMIN_PASSWORD` (see `api/_session.js`) — it can't be forged without that
+  secret, so this is real access control, not obscurity. `_session.js` is
+  prefixed with `_` deliberately: Vercel excludes underscore-prefixed files
+  under `api/` from becoming their own routes, so it's safe as a shared
+  import instead of a fourth endpoint.
+- The password itself is never sent to the browser in any form, including
+  as a hash — client-side JS only ever sees success/failure.
+
+**Local dev gap**: `npm run dev` / `npm run preview` (plain Vite) don't
+execute `/api/*` — those routes only run on Vercel or under `vercel dev`.
+Cypress specs cover the auth flow entirely with `cy.intercept` against
+`/api/admin-*`, so `npm test` doesn't need a real server or password. To
+exercise the real login locally, use `vercel dev` (requires `vercel login`
+and linking the project) with `ADMIN_PASSWORD` set in `.env.local` — never
+commit that file (already in `.gitignore`).
 
 ## Conventions
 
@@ -133,4 +168,6 @@ not access control. That's a known, accepted tradeoff, not a bug to silently
   empty, so the section renders on its solid dark fallback until those files
   are added.
 - No Lighthouse/perf/accessibility budget wired into the pipeline.
-- Admin page has no real authentication (see above — accepted, not open).
+- `ADMIN_PASSWORD` must be set in the Vercel dashboard before the admin
+  login works in production — Claude can't set Vercel environment variables;
+  this is on Aira.

@@ -58,6 +58,13 @@ for the reasoning behind each.
       to, so export → replace file → commit → push)
 - [x] Mark the admin page `noindex` and keep it out of the public nav
 - [x] Cypress coverage for the admin page and the badge rendering
+- [x] Gate `admin.html` behind a real password check — three Vercel
+      Serverless Functions (`api/admin-login.js`, `admin-check.js`,
+      `admin-logout.js`) verify against the `ADMIN_PASSWORD` env var and
+      set a signed, HttpOnly session cookie; the password never reaches
+      the browser
+- [x] Cypress coverage for the sign-in flow (signed out, wrong password,
+      correct password, sign out) via `cy.intercept` on `/api/admin-*`
 
 ## Milestone 5 — Deployment
 
@@ -86,6 +93,8 @@ for the reasoning behind each.
 - [ ] Add a Lighthouse (or equivalent) performance/accessibility budget to
       the pipeline
 - [ ] Point a custom domain at the Vercel deployment
-- [ ] Revisit admin-page access (currently `noindex` + unlinked, not real
-      auth) if the URL ever becomes more widely known
+- [ ] **Set `ADMIN_PASSWORD` in the Vercel project's Environment Variables**
+      (Settings → Environment Variables) — sign-in returns a 500 until this
+      is set. Claude can't do this step; it needs Aira's Vercel dashboard
+      access.
 - [ ] Add new projects to the grid as freelance/personal work ships
