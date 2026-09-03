@@ -68,9 +68,9 @@ describe('Portfolio site', () => {
     cy.intercept('GET', '/data/projects-status.json', {
       'lavender-refreshments': 'live',
       'jordyns-bakes': 'live',
+      'set-it-up': 'live',
       'tic-tac-toe': 'in-progress',
       inspiration: 'live',
-      'ticket-pricing': 'live',
     }).as('status');
     cy.visit('/');
     cy.wait('@status');

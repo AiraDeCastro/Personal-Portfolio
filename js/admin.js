@@ -4,9 +4,9 @@
 const PROJECTS = [
   { id: 'lavender-refreshments', title: 'Lavender Refreshments' },
   { id: 'jordyns-bakes', title: "Jordyn's Bakes" },
+  { id: 'set-it-up', title: 'Set It Up' },
   { id: 'tic-tac-toe', title: 'Tic-Tac-Toe' },
   { id: 'inspiration', title: 'Inspiration' },
-  { id: 'ticket-pricing', title: 'Ticket Pricing' },
 ];
 
 const STATUS_URL = '/data/projects-status.json';

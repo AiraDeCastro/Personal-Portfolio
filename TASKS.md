@@ -42,6 +42,10 @@ for the reasoning behind each.
       sites (Lavender Refreshments, Jordyn's Bakes)
 - [x] Confirm the other three project tiles' gradient treatment reads
       intentionally, not as a missing image
+- [x] Swap Ticket Pricing out for Set It Up (Next.js/Prisma/NextAuth
+      scheduling app, still in active development) in the project grid
+- [x] Re-color the Tic-Tac-Toe tile to teal and give Set It Up a blue
+      gradient rooted in its own app's `scheduleColor` default (`#0072B2`)
 
 ## Milestone 4 — In-progress status system
 
