@@ -59,3 +59,24 @@ revealTargets.forEach((el) => observer.observe(el));
 // Footer year
 // ==========================================================================
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// ==========================================================================
+// "In Progress" badges — driven by public/data/projects-status.json,
+// edited via admin.html
+// ==========================================================================
+fetch('/data/projects-status.json')
+  .then((res) => (res.ok ? res.json() : {}))
+  .then((statusById) => {
+    Object.entries(statusById).forEach(([id, status]) => {
+      if (status !== 'in-progress') return;
+      const card = document.querySelector(`.project-card[data-project-id="${id}"]`);
+      if (!card) return;
+      const badge = document.createElement('span');
+      badge.className = 'project-badge';
+      badge.textContent = 'In Progress';
+      card.querySelector('.project-media').appendChild(badge);
+    });
+  })
+  .catch(() => {
+    // Status file missing or unreachable — cards just show with no badge.
+  });

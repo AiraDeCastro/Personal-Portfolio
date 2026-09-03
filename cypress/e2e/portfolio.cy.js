@@ -63,4 +63,18 @@ describe('Portfolio site', () => {
     cy.get('#mainNav a').first().click();
     cy.get('#mainNav').should('not.have.class', 'is-open');
   });
+
+  it('shows an "In Progress" badge only on projects flagged in the status file', () => {
+    cy.intercept('GET', '/data/projects-status.json', {
+      'lavender-refreshments': 'live',
+      'jordyns-bakes': 'live',
+      'tic-tac-toe': 'in-progress',
+      inspiration: 'live',
+      'ticket-pricing': 'live',
+    }).as('status');
+    cy.visit('/');
+    cy.wait('@status');
+    cy.get('[data-project-id="tic-tac-toe"] .project-badge').should('contain.text', 'In Progress');
+    cy.get('[data-project-id="lavender-refreshments"] .project-badge').should('not.exist');
+  });
 });

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin — Project Status</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <div class="admin-wrap">
+    <p class="admin-eyebrow">Internal tool — not part of the public site</p>
+    <h1>Project Status</h1>
+    <p class="admin-intro">
+      Toggle "In Progress" for any project still being built. This page can't publish
+      changes by itself — download the updated file below, replace
+      <code>public/data/projects-status.json</code> with it, then commit and push to go live.
+    </p>
+
+    <div class="project-list" id="projectList"></div>
+
+    <div class="admin-actions">
+      <button id="downloadBtn" class="btn btn-primary" type="button">Download updated file</button>
+      <p class="admin-status" id="statusMsg"></p>
+    </div>
+  </div>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
