@@ -73,6 +73,10 @@ for the reasoning behind each.
 
 ## Milestone 7 — Open work
 
+- [ ] Content edits made directly on GitHub's web UI (as with the
+      Jordyn's Bakes status flip) skip the pre-commit gates entirely —
+      decide whether that's acceptable for content-only changes or worth
+      guarding against
 - [ ] Supply the real hero video asset (`public/video/hero.mp4` +
       `hero-poster.jpg`) — the hero currently renders on its dark fallback
 - [ ] Add a Lighthouse (or equivalent) performance/accessibility budget to
