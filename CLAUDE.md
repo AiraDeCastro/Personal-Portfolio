@@ -6,6 +6,24 @@ for flagging projects as "in progress." Full product context — goals, rejected
 alternatives, known limitations — lives in the PRD; this file is the
 day-to-day operating guide.
 
+## Start of every session
+
+1. Read [`PLANNING.md`](PLANNING.md) — vision, architecture, stack, required
+   tools. It doesn't change often, but don't assume you already know it.
+2. Read [`TASKS.md`](TASKS.md) before starting work — check whether what
+   you're about to do is already tracked (as open or done) so you're not
+   duplicating or contradicting it.
+
+## Working on a task
+
+- Mark a task's checkbox done in `TASKS.md` **immediately** once it's
+  actually done (built, gates passing) — not batched at the end of a
+  session, and not marked done speculatively before it is.
+- If you discover a task along the way that isn't already in `TASKS.md`
+  (a bug, a missing piece, a follow-up worth tracking) — add it under the
+  relevant milestone, or under Milestone 7 if it doesn't fit an existing
+  one, as soon as you notice it.
+
 ## Stack & architecture
 
 - Vanilla HTML/CSS/JS. No framework, no backend, no database.
