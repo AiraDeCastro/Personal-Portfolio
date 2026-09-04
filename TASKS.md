@@ -19,10 +19,16 @@ for the reasoning behind each.
 - [x] Build the Contact section (email, phone, LinkedIn, GitHub)
 - [x] Sticky, scroll-aware nav with a mobile slide-down menu
 - [x] `.gitignore` for local tooling config
-- [x] Supply the real hero video asset — `public/video/hero.mp4` (HD
-      1280×720, Pexels, "Sea Water Surface with Ripples" by K2 Production,
-      free for commercial use) with a matching `hero-poster.jpg` frame
-      grabbed via canvas from the video itself
+- [x] Supply the real hero video asset — `public/video/hero.mp4`, with a
+      matching `hero-poster.jpg` frame grabbed via canvas from the video
+      itself
+- [x] Swapped the hero video to "Sea Waves at Sunset" by Engin Akyurt
+      (Pexels, free for commercial use), replacing the original "Sea Water
+      Surface with Ripples" clip. Aira trimmed and re-encoded it herself
+      (1920×1080, 10s, 27.5MB) after the original HD/SD Pexels exports of
+      this clip came back impractically large (172MB / 62.7MB) — this
+      footage's sparkle/highlight detail compresses far worse than the
+      first clip did at a similar size
 
 ## Milestone 2 — Engineering pipeline
 
