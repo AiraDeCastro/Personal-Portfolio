@@ -67,6 +67,11 @@ for the reasoning behind each.
 - [x] Corrected Tic-Tac-Toe's status back to `"live"` in
       `projects-status.json` — it had been flagged in-progress before
       confirming the rebuild was actually live and feature-complete
+- [x] Reordered the grid to Lavender Refreshments, Jordyn's Bakes, Gunita,
+      Set It Up, Tic-Tac-Toe, and removed Inspiration from the featured
+      set entirely — dropped its entry from `projects-status.json` and
+      `js/admin.js`'s `PROJECTS` list too, per the project-grid ↔
+      status-file contract in CLAUDE.md
 
 ## Milestone 4 — In-progress status system
 

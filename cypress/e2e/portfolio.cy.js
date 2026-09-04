@@ -70,7 +70,6 @@ describe('Portfolio site', () => {
       'jordyns-bakes': 'live',
       'set-it-up': 'live',
       'tic-tac-toe': 'in-progress',
-      inspiration: 'live',
       gunita: 'live',
     }).as('status');
     cy.visit('/');

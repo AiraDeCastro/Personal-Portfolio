@@ -8,10 +8,9 @@
 const PROJECTS = [
   { id: 'lavender-refreshments', title: 'Lavender Refreshments' },
   { id: 'jordyns-bakes', title: "Jordyn's Bakes" },
+  { id: 'gunita', title: 'Gunita' },
   { id: 'set-it-up', title: 'Set It Up' },
   { id: 'tic-tac-toe', title: 'Tic-Tac-Toe vs. Robot' },
-  { id: 'inspiration', title: 'Inspiration' },
-  { id: 'gunita', title: 'Gunita' },
 ];
 
 const STATUS_URL = '/data/projects-status.json';
