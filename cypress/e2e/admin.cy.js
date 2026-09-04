@@ -65,7 +65,14 @@ describe('Admin — project status', () => {
   });
 
   it('lists every project with an "In Progress" toggle', () => {
-    const titles = ['Lavender Refreshments', "Jordyn's Bakes", 'Set It Up', 'Tic-Tac-Toe', 'Inspiration'];
+    const titles = [
+      'Lavender Refreshments',
+      "Jordyn's Bakes",
+      'Set It Up',
+      'Tic-Tac-Toe vs. Robot',
+      'Inspiration',
+      'Gunita',
+    ];
     cy.get('.project-row').should('have.length', titles.length);
     titles.forEach((title) => {
       cy.contains('.project-row', title).find('input[type="checkbox"]').should('exist');
@@ -79,15 +86,17 @@ describe('Admin — project status', () => {
       'set-it-up': 'live',
       'tic-tac-toe': 'live',
       inspiration: 'live',
+      gunita: 'in-progress',
     }).as('status');
     cy.visit('/admin.html');
     cy.wait('@check');
     cy.wait('@status');
 
     cy.contains('.project-row', "Jordyn's Bakes").find('input[type="checkbox"]').should('be.checked');
+    cy.contains('.project-row', 'Gunita').find('input[type="checkbox"]').should('be.checked');
     cy.contains('.project-row', 'Lavender Refreshments').find('input[type="checkbox"]').should('not.be.checked');
     cy.contains('.project-row', 'Set It Up').find('input[type="checkbox"]').should('not.be.checked');
-    cy.contains('.project-row', 'Tic-Tac-Toe').find('input[type="checkbox"]').should('not.be.checked');
+    cy.contains('.project-row', 'Tic-Tac-Toe vs. Robot').find('input[type="checkbox"]').should('not.be.checked');
     cy.contains('.project-row', 'Inspiration').find('input[type="checkbox"]').should('not.be.checked');
   });
 

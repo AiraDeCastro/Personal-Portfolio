@@ -46,6 +46,17 @@ for the reasoning behind each.
       scheduling app, still in active development) in the project grid
 - [x] Re-color the Tic-Tac-Toe tile to teal and give Set It Up a blue
       gradient rooted in its own app's `scheduleColor` default (`#0072B2`)
+- [x] Add Gunita (private, Netflix-style photo/video album app — Next.js,
+      Supabase, RLS) as a real card, queued from the Backlog; gradient
+      tile in near-black/red, rooted in its own "Netflix-style" pitch
+- [x] Tic-Tac-Toe was rebuilt since it was first added — now a React app
+      with an Easy/Medium/Hard robot opponent, deployed live via GitHub
+      Actions to GitHub Pages. Replaced its gradient tile with a real
+      screenshot of the live board, and rewrote its description/tags/
+      links to match (added a Live Site link)
+- [x] Corrected Tic-Tac-Toe's status back to `"live"` in
+      `projects-status.json` — it had been flagged in-progress before
+      confirming the rebuild was actually live and feature-complete
 
 ## Milestone 4 — In-progress status system
 
@@ -113,7 +124,7 @@ once the card ships.
 
 - [ ] <repo-name> — <github-url> — <optional: one-line note on what it is
       or why it's worth featuring>
-- [ ] Gunita — https://github.com/AiraDeCastro/Gunita-Photo-Album — private
+- [x] Gunita — https://github.com/AiraDeCastro/Gunita-Photo-Album — private
       Netflix-style photo/video album app (Next.js, Supabase Postgres/Auth/
       Storage, Row Level Security-backed roles, Vitest); v1 feature-complete,
-      not yet deployed
+      not yet deployed. Card added — see Milestone 3
