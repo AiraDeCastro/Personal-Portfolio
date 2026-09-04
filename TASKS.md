@@ -72,6 +72,11 @@ for the reasoning behind each.
       set entirely — dropped its entry from `projects-status.json` and
       `js/admin.js`'s `PROJECTS` list too, per the project-grid ↔
       status-file contract in CLAUDE.md
+- [x] Gunita shipped — flagged `"live"` in `projects-status.json`, added a
+      real screenshot (`public/projects/gunita.jpg`) and a Live Site link
+      to gunita-photo-album.vercel.app. The screenshot is of the sign-in
+      screen specifically, since the actual browse experience is behind
+      auth by design — there's no public unauthenticated view to capture
 
 ## Milestone 4 — In-progress status system
 
