@@ -19,6 +19,10 @@ for the reasoning behind each.
 - [x] Build the Contact section (email, phone, LinkedIn, GitHub)
 - [x] Sticky, scroll-aware nav with a mobile slide-down menu
 - [x] `.gitignore` for local tooling config
+- [x] Supply the real hero video asset — `public/video/hero.mp4` (HD
+      1280×720, Pexels, "Sea Water Surface with Ripples" by K2 Production,
+      free for commercial use) with a matching `hero-poster.jpg` frame
+      grabbed via canvas from the video itself
 
 ## Milestone 2 — Engineering pipeline
 
@@ -101,15 +105,12 @@ for the reasoning behind each.
       Jordyn's Bakes status flip) skip the pre-commit gates entirely —
       decide whether that's acceptable for content-only changes or worth
       guarding against
-- [ ] Supply the real hero video asset (`public/video/hero.mp4` +
-      `hero-poster.jpg`) — the hero currently renders on its dark fallback
 - [ ] Add a Lighthouse (or equivalent) performance/accessibility budget to
       the pipeline
 - [ ] Point a custom domain at the Vercel deployment
-- [ ] **Set `ADMIN_PASSWORD` in the Vercel project's Environment Variables**
-      (Settings → Environment Variables) — sign-in returns a 500 until this
-      is set. Claude can't do this step; it needs Aira's Vercel dashboard
-      access.
+- [x] **Set `ADMIN_PASSWORD` in the Vercel project's Environment Variables**
+      — confirmed working: a real sign-in produced the status-file download
+      used for the Jordyn's Bakes/Set It Up/Tic-Tac-Toe/Inspiration update
 - [ ] Add new projects to the grid as freelance/personal work ships (see
       the Backlog below for repos already queued)
 
