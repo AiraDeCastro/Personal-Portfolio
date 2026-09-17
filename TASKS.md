@@ -118,6 +118,9 @@ for the reasoning behind each.
 - [x] Write this file
 - [x] Add the "Backlog — Projects to add" section below, as a lightweight
       alternative to a full add/edit admin UI
+- [x] Write `README.md` — the GitHub-facing front door (stack, getting
+      started, quality gates, links to the other docs), distinct from
+      CLAUDE.md's Claude-session-oriented operating guide
 
 ## Milestone 7 — Open work
 
