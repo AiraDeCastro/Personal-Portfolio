@@ -67,10 +67,10 @@ describe('Admin — project status', () => {
   it('lists every project with an "In Progress" toggle', () => {
     const titles = [
       'Lavender Refreshments',
-      "Jordyn's Bakes",
+      'Learn French with Aira',
       'Gunita',
       'Set It Up',
-      'Tic-Tac-Toe vs. Robot',
+      'Cold Open',
     ];
     cy.get('.project-row').should('have.length', titles.length);
     titles.forEach((title) => {
@@ -81,20 +81,20 @@ describe('Admin — project status', () => {
   it('loads each toggle to match the fetched status file', () => {
     cy.intercept('GET', '/data/projects-status.json', {
       'lavender-refreshments': 'live',
-      'jordyns-bakes': 'in-progress',
+      'learn-french-with-aira': 'in-progress',
       gunita: 'in-progress',
       'set-it-up': 'live',
-      'tic-tac-toe': 'live',
+      'clone-wars-quotes': 'live',
     }).as('status');
     cy.visit('/admin.html');
     cy.wait('@check');
     cy.wait('@status');
 
-    cy.contains('.project-row', "Jordyn's Bakes").find('input[type="checkbox"]').should('be.checked');
+    cy.contains('.project-row', 'Learn French with Aira').find('input[type="checkbox"]').should('be.checked');
     cy.contains('.project-row', 'Gunita').find('input[type="checkbox"]').should('be.checked');
     cy.contains('.project-row', 'Lavender Refreshments').find('input[type="checkbox"]').should('not.be.checked');
     cy.contains('.project-row', 'Set It Up').find('input[type="checkbox"]').should('not.be.checked');
-    cy.contains('.project-row', 'Tic-Tac-Toe vs. Robot').find('input[type="checkbox"]').should('not.be.checked');
+    cy.contains('.project-row', 'Cold Open').find('input[type="checkbox"]').should('not.be.checked');
   });
 
   it('flags unsaved changes when a toggle is checked', () => {

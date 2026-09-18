@@ -81,6 +81,19 @@ for the reasoning behind each.
       to gunita-photo-album.vercel.app. The screenshot is of the sign-in
       screen specifically, since the actual browse experience is behind
       auth by design — there's no public unauthenticated view to capture
+- [x] Swapped Jordyn's Bakes out for Learn French with Aira (comprehensible-
+      input French app — Next.js/tRPC/Prisma, "early planning stage, no app
+      code yet" per its README), gradient tile in French flag blue/red
+      (`#002654`/`#ed2939`). Removed the now-orphaned
+      `public/projects/jordyns-bakes.jpg`
+- [x] Swapped Tic-Tac-Toe out for Cold Open (cross-platform home-screen
+      widget for randomized *Star Wars: The Clone Wars* cold-open quotes —
+      Swift/Kotlin/C#, a fan project not affiliated with Lucasfilm/Disney,
+      per its own README disclaimer), gradient tile in black/amber
+      (`#0d0d0d`/`#d97706`). Removed the now-orphaned
+      `public/projects/tic-tac-toe.jpg`
+- [x] Both new projects flagged `"in-progress"` in `projects-status.json`,
+      per request
 
 ## Milestone 4 — In-progress status system
 

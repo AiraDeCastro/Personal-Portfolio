@@ -7,10 +7,10 @@
 // browser.
 const PROJECTS = [
   { id: 'lavender-refreshments', title: 'Lavender Refreshments' },
-  { id: 'jordyns-bakes', title: "Jordyn's Bakes" },
+  { id: 'learn-french-with-aira', title: 'Learn French with Aira' },
   { id: 'gunita', title: 'Gunita' },
   { id: 'set-it-up', title: 'Set It Up' },
-  { id: 'tic-tac-toe', title: 'Tic-Tac-Toe vs. Robot' },
+  { id: 'clone-wars-quotes', title: 'Cold Open' },
 ];
 
 const STATUS_URL = '/data/projects-status.json';

@@ -67,14 +67,14 @@ describe('Portfolio site', () => {
   it('shows an "In Progress" badge only on projects flagged in the status file', () => {
     cy.intercept('GET', '/data/projects-status.json', {
       'lavender-refreshments': 'live',
-      'jordyns-bakes': 'live',
+      'learn-french-with-aira': 'live',
       'set-it-up': 'live',
-      'tic-tac-toe': 'in-progress',
+      'clone-wars-quotes': 'in-progress',
       gunita: 'live',
     }).as('status');
     cy.visit('/');
     cy.wait('@status');
-    cy.get('[data-project-id="tic-tac-toe"] .project-badge').should('contain.text', 'In Progress');
+    cy.get('[data-project-id="clone-wars-quotes"] .project-badge').should('contain.text', 'In Progress');
     cy.get('[data-project-id="lavender-refreshments"] .project-badge').should('not.exist');
   });
 });
