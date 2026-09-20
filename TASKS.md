@@ -137,18 +137,53 @@ for the reasoning behind each.
 
 ## Milestone 7 — Open work
 
-- [ ] Content edits made directly on GitHub's web UI (as with the
-      Jordyn's Bakes status flip) skip the pre-commit gates entirely —
-      decide whether that's acceptable for content-only changes or worth
-      guarding against
+- [ ] Content edits made directly on GitHub's web UI skip the pre-commit
+      gates entirely — still an open call on whether that's acceptable.
+      The specific incident that first raised this (a typo in
+      `projects-status.json`) is moot now that file's gone (Milestone 8),
+      but the general risk applies to any file, `index.html` included
 - [ ] Add a Lighthouse (or equivalent) performance/accessibility budget to
       the pipeline
 - [ ] Point a custom domain at the Vercel deployment
-- [x] **Set `ADMIN_PASSWORD` in the Vercel project's Environment Variables**
-      — confirmed working: a real sign-in produced the status-file download
-      used for the Jordyn's Bakes/Set It Up/Tic-Tac-Toe/Inspiration update
+- [x] ~~Set `ADMIN_PASSWORD` in the Vercel project's Environment
+      Variables~~ — done, then made moot: the whole admin/auth system this
+      env var supported was removed in Milestone 8. No env vars or secrets
+      remain anywhere in this project
 - [ ] Add new projects to the grid as freelance/personal work ships (see
       the Backlog below for repos already queued)
+
+## Milestone 8 — Simplification: remove the admin/status system
+
+The password-gated `admin.html` + `projects-status.json` + three
+serverless functions (built across Milestone 4) got ripped back out. Aira's
+own read on it: "I only wanted to show that it wasn't done... I'm sorry for
+making things complicated" — which is exactly right, and not something to
+be sorry for. The tool solved "toggle status without touching code," but
+she was already editing `index.html` directly for every other content
+change (swapping projects, rewriting copy, adding cards), so that premise
+never actually got used — the admin page added a real password/session/
+serverless-function system to save a step that wasn't being taken.
+
+- [x] Hardcoded `<span class="project-badge">In Progress</span>` directly
+      into the three cards that needed it (Learn French with Aira, Set It
+      Up, Cold Open) — no data file, no fetch, no admin UI
+- [x] Removed the fetch-and-inject badge logic from `js/script.js`
+- [x] Deleted `admin.html`, `js/admin.js`, `css/admin.css`
+- [x] Deleted `api/` entirely (`admin-login.js`, `admin-check.js`,
+      `admin-logout.js`, `_session.js`) — the site has zero backend again,
+      no exceptions
+- [x] Deleted `public/data/projects-status.json`
+- [x] Simplified `vite.config.js` back to a single entry point (no more
+      `admin.html` in `rollupOptions.input`)
+- [x] Removed the now-unused `api/**/*.js` block from `eslint.config.js`
+- [x] Deleted `cypress/e2e/admin.cy.js` (8 tests, all for a page that no
+      longer exists); replaced the fetch-intercepted badge test in
+      `portfolio.cy.js` with a plain DOM check against the hardcoded badges
+- [x] Stripped the now-meaningless `data-project-id`/`data-tile` attributes
+      off every project card — nothing reads them anymore
+- [x] Updated CLAUDE.md, PLANNING.md, and README.md to drop every
+      admin/auth/status-file reference and describe the site as what it
+      now actually is: fully static, no backend, one entry point
 
 ## Backlog — Projects to add
 

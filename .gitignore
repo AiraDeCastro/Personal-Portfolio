@@ -14,8 +14,7 @@ cypress/downloads/
 # Logs
 npm-debug.log*
 
-# Local env vars (ADMIN_PASSWORD, etc.) — set these in the Vercel dashboard,
-# never commit them
+# Local env vars — none currently in use, kept as a standing safety net
 .env
 .env.local
 .vercel/

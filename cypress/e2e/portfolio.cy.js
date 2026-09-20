@@ -64,17 +64,15 @@ describe('Portfolio site', () => {
     cy.get('#mainNav').should('not.have.class', 'is-open');
   });
 
-  it('shows an "In Progress" badge only on projects flagged in the status file', () => {
-    cy.intercept('GET', '/data/projects-status.json', {
-      'lavender-refreshments': 'live',
-      'learn-french-with-aira': 'live',
-      'set-it-up': 'live',
-      'clone-wars-quotes': 'in-progress',
-      gunita: 'live',
-    }).as('status');
-    cy.visit('/');
-    cy.wait('@status');
-    cy.get('[data-project-id="clone-wars-quotes"] .project-badge').should('contain.text', 'In Progress');
-    cy.get('[data-project-id="lavender-refreshments"] .project-badge').should('not.exist');
+  it('shows an "In Progress" badge only on projects still being built', () => {
+    const inProgress = ['Learn French with Aira', 'Set It Up', 'Cold Open'];
+    const live = ['Lavender Refreshments', 'Gunita'];
+
+    inProgress.forEach((title) => {
+      cy.contains('.project-card', title).find('.project-badge').should('contain.text', 'In Progress');
+    });
+    live.forEach((title) => {
+      cy.contains('.project-card', title).find('.project-badge').should('not.exist');
+    });
   });
 });
