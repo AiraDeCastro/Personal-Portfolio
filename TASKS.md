@@ -23,16 +23,18 @@ for the reasoning behind each.
       matching `hero-poster.jpg` frame grabbed via canvas from the video
       itself
 - [x] Swapped the hero video to "Sea Waves at Sunset" by Engin Akyurt
-- [x] Added a favicon — Aira's "AD" monogram, cropped tight to the glyph
-      and exported as `public/favicon.png` (256×256) and
-      `public/apple-touch-icon.png` (180×180), linked from both
-      `index.html` and `admin.html`
       (Pexels, free for commercial use), replacing the original "Sea Water
       Surface with Ripples" clip. Aira trimmed and re-encoded it herself
       (1920×1080, 10s, 27.5MB) after the original HD/SD Pexels exports of
       this clip came back impractically large (172MB / 62.7MB) — this
       footage's sparkle/highlight detail compresses far worse than the
       first clip did at a similar size
+- [x] Added a favicon — Aira's "AD" monogram, cropped tight to the glyph
+      and exported as `public/favicon.png` (256×256) and
+      `public/apple-touch-icon.png` (180×180), linked from `index.html`
+- [x] Updated the favicon to a new version of the monogram — cream "AD" on
+      a green rounded-square ground (an app-icon style treatment), same
+      file paths so no HTML changes were needed
 
 ## Milestone 2 — Engineering pipeline
 
