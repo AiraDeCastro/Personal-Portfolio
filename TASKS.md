@@ -35,6 +35,13 @@ for the reasoning behind each.
 - [x] Updated the favicon to a new version of the monogram — cream "AD" on
       a green rounded-square ground (an app-icon style treatment), same
       file paths so no HTML changes were needed
+- [x] Added an "Activity" section (between Work and Skills) showing Aira's
+      real GitHub contribution graph, pulled live from the third-party
+      image service ghchart.rshah.org — no backend, matches the site's
+      exact accent color (`#4b3f72`). Wrapped in a link to her GitHub
+      profile, with a JS fallback (`js/script.js`) that swaps in a plain
+      text link if the image ever fails to load, so a third-party outage
+      degrades gracefully instead of showing a broken image
 
 ## Milestone 2 — Engineering pipeline
 

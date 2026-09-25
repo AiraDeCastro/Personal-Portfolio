@@ -38,7 +38,7 @@ mainNav.querySelectorAll('a').forEach((link) => {
 // Reveal-on-scroll
 // ==========================================================================
 const revealTargets = document.querySelectorAll(
-  '.section-tag, .section-heading, .about-body, .about-stats, .project-card, .skill-block, .contact-links, .work-cta'
+  '.section-tag, .section-heading, .about-body, .about-stats, .project-card, .skill-block, .contact-links, .work-cta, .activity-chart'
 );
 revealTargets.forEach((el) => el.classList.add('reveal'));
 
@@ -59,3 +59,16 @@ revealTargets.forEach((el) => observer.observe(el));
 // Footer year
 // ==========================================================================
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// ==========================================================================
+// GitHub activity chart — falls back to a text link if the third-party
+// chart image (ghchart.rshah.org) is ever unavailable
+// ==========================================================================
+const activityChart = document.getElementById('activityChart');
+const activityImg = activityChart?.querySelector('img');
+
+activityImg?.addEventListener(
+  'error',
+  () => activityChart.classList.add('is-unavailable'),
+  { once: true }
+);
