@@ -364,6 +364,7 @@ h1, h2, h3 { margin: 0; }
 .work { background: var(--color-bg); }
 
 .project-grid {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
@@ -372,10 +373,46 @@ h1, h2, h3 { margin: 0; }
 .project-card--wide { grid-column: span 2; }
 
 .project-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   border-top: 1px solid var(--color-line);
   padding-top: 28px;
+}
+
+/* Focus trail: one outline that glides between project cards as the pointer
+   or keyboard focus moves, while the other cards recede. Positioned by
+   js/script.js. */
+.focus-trail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  border: 1px solid rgb(75 63 114 / 45%);
+  border-radius: 16px;
+  background: rgb(75 63 114 / 4%);
+  box-shadow: 0 16px 40px rgb(75 63 114 / 12%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .4s var(--ease), width .4s var(--ease), height .4s var(--ease), opacity .25s var(--ease);
+}
+
+.focus-trail.is-active { opacity: 1; }
+
+.project-card > .project-media,
+.project-card > .project-info {
+  transition: opacity .3s var(--ease), transform .5s var(--ease);
+}
+
+.project-grid.has-focus .project-card:not(.is-focused) > .project-media,
+.project-grid.has-focus .project-card:not(.is-focused) > .project-info {
+  opacity: .45;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focus-trail,
+  .project-card > .project-media,
+  .project-card > .project-info { transition: none; }
 }
 
 .project-media {

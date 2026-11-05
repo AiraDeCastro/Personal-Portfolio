@@ -55,6 +55,11 @@ for the reasoning behind each.
       commitizen (`npm run commit`)
 - [x] Work around the Windows `start-server-and-test`/`wmic.exe` crash with
       a custom `scripts/run-e2e.js` runner
+- [x] The `npm audit` gate did its job in November: new advisories against
+      Vite 8.2.0–8.2.2 and several transitive dependencies (brace-expansion,
+      follow-redirects, joi, qs, and others) blocked a commit. Cleared with a
+      plain `npm audit fix` (lockfile-only, no `--force`, no `package.json`
+      change) rather than bypassing the hook
 
 ## Milestone 3 — Content & project grid
 
@@ -103,6 +108,18 @@ for the reasoning behind each.
       `public/projects/tic-tac-toe.jpg`
 - [x] Both new projects flagged `"in-progress"` in `projects-status.json`,
       per request
+- [x] Added a focus trail to the project grid: one outline (accent purple,
+      soft glow) that glides to whichever card the mouse is over or
+      keyboard focus is in, while the other cards dim to 45%. Mouse-only for
+      pointer input (so a touch tap can't leave a card stuck highlighted),
+      follows keyboard focus too, and respects `prefers-reduced-motion`.
+      Lives in `js/script.js` + `.focus-trail` in `css/style.css`; three new
+      Cypress tests cover mouse, keyboard, and the stat below
+- [x] Updated the About stat from "1 production app" to "2 production apps,
+      start to finish" (Lavender Refreshments and Gunita are both live)
+- [ ] The About paragraph still says "a full production web application"
+      (singular) — worth rewording to match the "2" stat; left alone since
+      it's Aira's own résumé-derived wording
 
 ## Milestone 4 — In-progress status system
 

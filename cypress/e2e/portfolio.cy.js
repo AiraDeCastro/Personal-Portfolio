@@ -64,6 +64,36 @@ describe('Portfolio site', () => {
     cy.get('#mainNav').should('not.have.class', 'is-open');
   });
 
+  it('moves a focus trail to the project card under the mouse and dims the rest', () => {
+    cy.get('.project-grid').scrollIntoView();
+    cy.get('.focus-trail').should('not.have.class', 'is-active');
+
+    cy.contains('.project-card', 'Gunita').trigger('pointerenter', { pointerType: 'mouse' });
+    cy.get('.focus-trail').should('have.class', 'is-active');
+    cy.contains('.project-card', 'Gunita').should('have.class', 'is-focused');
+    cy.contains('.project-card', 'Set It Up')
+      .find('.project-info')
+      .should('have.css', 'opacity', '0.45');
+
+    cy.contains('.project-card', 'Set It Up').trigger('pointerenter', { pointerType: 'mouse' });
+    cy.contains('.project-card', 'Set It Up').should('have.class', 'is-focused');
+    cy.contains('.project-card', 'Gunita').should('not.have.class', 'is-focused');
+
+    cy.get('.project-grid').trigger('pointerleave', { pointerType: 'mouse', force: true });
+    cy.get('.focus-trail').should('not.have.class', 'is-active');
+    cy.get('.project-grid').should('not.have.class', 'has-focus');
+  });
+
+  it('also follows keyboard focus, so the trail is not mouse-only', () => {
+    cy.contains('.project-card', 'Set It Up').find('a').first().focus();
+    cy.contains('.project-card', 'Set It Up').should('have.class', 'is-focused');
+    cy.get('.focus-trail').should('have.class', 'is-active');
+  });
+
+  it('shows the production app count in the About stats', () => {
+    cy.contains('.stat', 'Production apps').find('.stat-number').should('have.text', '2');
+  });
+
   it('shows an "In Progress" badge only on projects still being built', () => {
     const inProgress = ['Learn French with Aira', 'Set It Up', 'Cold Open'];
     const live = ['Lavender Refreshments', 'Gunita'];
