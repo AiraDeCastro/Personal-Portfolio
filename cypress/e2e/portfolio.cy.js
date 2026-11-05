@@ -96,7 +96,7 @@ describe('Portfolio site', () => {
 
   it('shows an "In Progress" badge only on projects still being built', () => {
     const inProgress = ['Learn French with Aira', 'Set It Up', 'Cold Open'];
-    const live = ['Lavender Refreshments', 'Gunita'];
+    const live = ['Lavender Refreshments', 'Focus Trail', 'Gunita'];
 
     inProgress.forEach((title) => {
       cy.contains('.project-card', title).find('.project-badge').should('contain.text', 'In Progress');

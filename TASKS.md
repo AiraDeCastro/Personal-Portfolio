@@ -115,6 +115,16 @@ for the reasoning behind each.
       follows keyboard focus too, and respects `prefers-reduced-motion`.
       Lives in `js/script.js` + `.focus-trail` in `css/style.css`; three new
       Cypress tests cover mouse, keyboard, and the stat below
+- [x] Added **Focus Trail** (repo `focus-project-tracker`) to the grid as a
+      wide card right after Lavender Refreshments: a Next.js/TypeScript/Turso
+      personal dashboard that graphs GitHub milestone progress and keeps one
+      Focus Project at a time. Real screenshot of its example-data demo
+      (`public/projects/focus-trail.jpg`), Live Demo link to
+      focus-project-tracker.vercel.app/demo. No "In Progress" badge (it's
+      deployed with a working demo) — add one in `index.html` if that's
+      wrong. Note: the earlier "focus trail" request was misread as a UI
+      hover effect, which is why the project-grid outline above exists;
+      this is the project Aira actually meant
 - [x] Updated the About stat from "1 production app" to "2 production apps,
       start to finish" (Lavender Refreshments and Gunita are both live)
 - [x] Reworded the About paragraph from "a full production web
