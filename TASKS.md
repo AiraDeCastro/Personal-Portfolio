@@ -117,9 +117,9 @@ for the reasoning behind each.
       Cypress tests cover mouse, keyboard, and the stat below
 - [x] Updated the About stat from "1 production app" to "2 production apps,
       start to finish" (Lavender Refreshments and Gunita are both live)
-- [ ] The About paragraph still says "a full production web application"
-      (singular) — worth rewording to match the "2" stat; left alone since
-      it's Aira's own résumé-derived wording
+- [x] Reworded the About paragraph from "a full production web
+      application" to "two full production web applications" so it matches
+      the "2" stat
 
 ## Milestone 4 — In-progress status system
 
